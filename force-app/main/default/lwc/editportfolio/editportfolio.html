@@ -1,0 +1,100 @@
+<template>
+    <div if:true={editportfoliomodal}>
+        <section class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <div class=" slds-text-heading_small slds-m-bottom_small slds-align_absolute-center">
+                        UPDATE MY PORTFOLIO SETTINGS
+                    </div>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <div class=" slds-text-heading_small slds-m-bottom_small slds-align_absolute-center">
+                        Add To My Portfolio
+                    </div>
+                    <div class="slds-p-vertical_small slds-grid slds-grid_align-spread">
+                        <div>
+                            <lightning-input placeholder="TICKERS" onclick={handleTickerBoxClick}
+                                value={tickerSelectedValue} onchange={handleTickerSearch}></lightning-input>
+                            <template if:true={showTickerValues}>
+                                <div class="slds-p-horizontal_xx-small slds-scrollable_y"
+                                    style="max-height:100px; max-width:275px;">
+                                    <ul class=".slds-list_vertical-space-medium">
+                                        <template for:each={tickerlist} for:item="camp">
+                                            <li key={camp.Id} onclick={handleTickerSelection} data-value={camp.Id}
+                                                data-label={camp.Ticker__c} class="slds-p-around_xx-small"
+                                                style="cursor: pointer;">
+                                                {camp.Ticker__c}
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </template>
+                        </div>
+                        <div>
+                            <lightning-input placeholder="SECTORS" onclick={handleSectorBoxClick}
+                                value={tickerSelectedValue}></lightning-input>
+                            <template if:true={showSectorValues}>
+                                <div class="slds-p-horizontal_xx-small slds-scrollable_y"
+                                    style="max-height:100px; max-width:275px;">
+                                    <ul class=".slds-list_vertical-space-medium">
+                                        <template for:each={storeSectorValues} for:item="sector">
+                                            <li key={sector.label} onclick={handleSectorSelection}
+                                                data-label={sector.label} class="slds-p-around_xx-small"
+                                                style="cursor: pointer;">
+                                                {sector.label}
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="slds-text-heading_small slds-align_absolute-center">
+                        My Saved Portfolio
+                        </br>
+                    </div>
+                    <div class="slds-grid slds-gutters_small">
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="slds-box" style="min-height: 200px;">
+                                TICKERS: </br>
+                                <template if:true={tickerValues}>
+                                    <template for:each={tickerValues} for:item="item">
+                                        <p key={item}>
+                                            {item}
+                                            <lightning-icon icon-name="utility:close" size="small"
+                                                style="margin-top: -4px; margin-right: 0px;" onclick={handleTickerClick}
+                                                name={item}></lightning-icon>
+                                        </p>
+                                    </template>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="slds-box" style="min-height: 200px;">
+                                SECTORS: </br>
+                                <template if:true={sectorValues}>
+                                    <template for:each={sectorValues} for:item="item">
+                                        <p key={item}>
+                                            {item}
+                                            <lightning-icon icon-name="utility:close" size="small"
+                                                style="margin-top: -4px; margin-right: 0px;" onclick={handleSectorClick}
+                                                name={item}></lightning-icon>
+                                        </p>
+                                    </template>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-text-heading_small slds-align_absolute-center"
+                        onclick={saveTickerSectorValues}>SAVE AND GO BACK TO MY PORTFOLIO
+                    </button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open">
+        </div>
+        <c-common-toast></c-common-toast>
+    </div>
+</template>

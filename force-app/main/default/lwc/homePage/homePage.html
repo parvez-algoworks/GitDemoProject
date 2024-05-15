@@ -1,0 +1,40 @@
+<template>
+    <div if:true={showparent}>
+        <div class="slds-var-m-around_medium slds-p-left_xx-large">
+            <div style="padding:10px">
+                <img src={Imageurl} />
+            </div>
+        </div>
+
+        <div if:true={showlogin}>
+            <div class="slds-card slds-p-left_xx-large">
+                <div class="slds-card slds-p-left_xx-large">
+                    <div class="slds-card__body slds-card__body_inner slds-p-left_xx-large slds-p-top_xx-large">
+                        <lightning-input label="Username" style="max-width:320px;"
+                            onchange={handleUsernameChange}>
+                        </lightning-input>
+                        <lightning-input type="password" label="Password" style="max-width:320px;"
+                            onchange={handlePasswordChange}>
+                        </lightning-input>
+                        <div class="slds-p-top_xx-large slds-p-left_xx-large">
+                            <lightning-button label="Submit" onclick={login} variant="brand">
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <lightning-button label="Sign Up" onclick={signup}></lightning-button>
+            <!-- <div class="slds-var-m-around_medium slds-p-left_xx-large">
+                <div style="padding:10px">
+                    <img src={brushes}/>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="slds-grid">
+        <c-sitepanel showpanel={panelvar} showtable={tablevar} contactid={contid} headervar={headervalue} pinvalue={uid}></c-sitepanel>
+        <!-- <c-header showheader={headerBool}></c-header> -->
+    </div>
+    <c-register-u-ser signup-boolean={showRegister} oncalllogin={backtologin}></c-register-u-ser>
+    <c-common-toast></c-common-toast>
+</template>

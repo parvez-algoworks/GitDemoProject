@@ -1,0 +1,16 @@
+<template>
+    <div if:true={showevent}>
+        <div class="slds-is-relative">
+            <c-header registeredeventtable={filteredData} onsearchedtable={searchitemintable} oncleartable={clearitemtable} registerbutton={registerdisabled} campaignlist={selectedIds} contactidstomodal={contactids} selectedtab={tabValue} icon={tabIcon}></c-header>
+                <div class="slds-p-horizontal_medium" style="height: 38rem;">
+                    <lightning-datatable data={filteredData} columns={columns} key-field="Id"
+                        onrowselection={handleSelectedRow}
+                         onsort={handleSort} 
+                         enable-infinite-loading 
+                         onloadmore={loadMoreEvents}>
+                    </lightning-datatable> 
+                </div>
+        </div>
+    </div>
+    <c-common-toast></c-common-toast>
+</template>

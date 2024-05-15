@@ -1,0 +1,29 @@
+<template>
+    <div if:true={showunregistermodal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <article class="slds-card">
+                <div class="slds-card__header slds-grid">
+                        <header>
+                        <div class="slds-no-flex">
+                            <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Close</button>
+                        </div>
+                    </header>
+                </div>
+                <div class="slds-card__body">
+                   <b> Campaign to Unregister - </b> {sendcampaign}
+                </br></br>
+                  <b> Description -</b>  {sendcampaigndesc}
+                </div>
+                <footer class="slds-card__footer">
+                    <button class="slds-button slds-button_destructive" onclick={remove}>Cancel Registration</button>
+                </footer>
+            </article>
+        </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open">
+        </div>
+</div>
+<c-common-toast></c-common-toast>
+</template>

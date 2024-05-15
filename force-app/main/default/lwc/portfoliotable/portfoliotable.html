@@ -1,0 +1,15 @@
+<template>
+    <!-- <div if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+    </div> -->
+    <lightning-button label="Download Report" onclick={downloadFile}></lightning-button>
+    <div class="slds-p-horizontal_medium" style="height: 38rem;">
+
+        <lightning-datatable data={tabledata} columns={columns} key-field="Id">
+        </lightning-datatable>
+    </div>
+   
+    <div if:true={errormessage}>
+        <p>Error While Loading Data</p>
+    </div>
+</template>

@@ -1,0 +1,12 @@
+<template>
+    <div if:true={showinsightreport}>
+        <c-header hide-date-range={hideDateFilter} hide-sector-field={hideSector} show-publish-date={showPublishDateField} selectedtab={activeTab} icon={tabIcon}></c-header>
+        <div if:true={showlookup}>
+        <lightning-button label="Look Up"></lightning-button></div>
+        <div if:true={showtimetracking}>
+        <lightning-button label="Time Tracking"></lightning-button></div>
+        <div if:true={showforecasting}>
+        <lightning-button label="Forecasting Report"></lightning-button></div>
+        <!-- <c-insight-report-table showinsighttable={showinsightreportdata} contactid={loggedincontact}></c-insight-report-table> -->
+    </div>
+</template>

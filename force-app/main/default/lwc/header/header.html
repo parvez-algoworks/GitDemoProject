@@ -1,0 +1,47 @@
+<template>
+    <div style="max-width:1300px;">
+        <div class="slds-grid">
+            <h4>{selectedtab}</h4>
+            <lightning-icon icon-name={icon} title="Event" size="x-small">
+            </lightning-icon>
+        </div>
+        </br>
+        <div class="slds-grid">
+            <h4>Filter</h4>
+            <lightning-icon icon-name="utility:filterList" title="Filter" size="x-small">
+            </lightning-icon>
+        </div>
+        <div class="slds-p-horizontal_medium slds-p-vertical_small slds-grid slds-grid_align-spread">
+            <lightning-input placeholder="NAME/TICKER SEARCH" onchange={handlenamechange} value={name}>
+            </lightning-input>
+            <div if:false={hideSectorField}>
+                <lightning-input placeholder="SECTOR" onchange={handlesectorchange} value={sector}>
+                </lightning-input>
+            </div>
+            <div if:false={hideDateRange}>
+                <lightning-input class="fromdate" placeholder="FROM DATE" onchange={handlestartdatechange}
+                    value={startdatechange}>
+                </lightning-input>
+                <lightning-input class="todate" placeholder="TO DATE" onchange={handleenddatechange}
+                    value={enddatechange}>
+                </lightning-input>
+            </div>
+            <div if:true={showPublishDate}>
+                <lightning-input placeholder="PUBLISH DATE">
+                </lightning-input>
+            </div>
+            <lightning-button label="SEARCH" onclick={search}>
+            </lightning-button>
+            <lightning-button label="CLEAR SEARCH" onclick={clearsearchvalue}>
+            </lightning-button>
+            <lightning-button disabled={registerbutton} label="Register" variant="brand" onclick={registerCampaign}>
+            </lightning-button>
+        </div>
+    </div>
+    <c-common-toast></c-common-toast>
+    <div if:true={openModal}>
+        <c-campaign-registrationmodal openmodal={showModal} campaignlistfromheader={campaignlist}
+            onchangemodal={closemodal} onclosemodal={hideModalBox} contactidsfromheader={contactidstomodal}>
+        </c-campaign-registrationmodal>
+    </div>
+</template>

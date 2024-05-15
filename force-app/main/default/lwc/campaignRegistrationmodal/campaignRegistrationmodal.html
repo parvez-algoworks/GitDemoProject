@@ -1,0 +1,45 @@
+<template>
+    <div if:true={openmodal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <article class="slds-card">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-contact" title="contact">
+                                    <span class="slds-assistive-text">Campaign</span>
+                                </span>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    <span>Campaign</span>
+                                </h2>
+                            </div>
+                            <div class="slds-no-flex">
+                                <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Close</button>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body">
+                        <div if:true={isLoading}>
+                            <lightning-spinner alternative-text="Loading" size="x-small"></lightning-spinner>
+                        </div>
+                        <lightning-datatable data={tabledata} columns={columns} key-field="Id"
+                        onrowaction={handleRowLevelAct} hide-checkbox-column>
+                        </lightning-datatable>
+                    </div>
+                    <footer class="slds-card__footer">
+                        <div if:true={errormsg}>
+                            <h2 class="error-message">Error - {errormsg}</h2>
+                                </div>
+                        <button class="slds-button slds-button_success" onclick={confirmregistration}>Confirm Registration</button>
+                    </footer>
+                </article>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open">
+        </div>
+    </div>
+    <c-common-toast></c-common-toast>
+</template>

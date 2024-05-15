@@ -1,0 +1,17 @@
+<template>
+    <div if:true={showinsighttable}>
+        <div class="slds-p-horizontal_medium" style="height: 38rem;">
+            <lightning-datatable data={insightTableData} columns={columns} key-field="Id" 
+                                 onrowaction={getRecordId}
+                                 hide-checkbox-column="true">
+            </lightning-datatable>
+        </div>
+    </div>
+    <div if:true={showframe}>
+        <div class="slds-p-horizontal_medium" style="height: 38rem;">
+            <lightning-button label="close" onclick={hideFrame}></lightning-button>
+            <iframe width="1000" height="700" src={fullurl}></iframe>
+        </div>
+    </div>
+    <c-common-toast></c-common-toast>
+</template>

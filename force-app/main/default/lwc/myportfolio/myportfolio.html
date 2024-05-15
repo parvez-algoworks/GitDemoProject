@@ -1,0 +1,8 @@
+<template>
+    <div if:true={showportfolio}>
+        <c-header selectedtab={tabValue} onsearchedtable={searchitemintable} oncleartable={clearitemtable} contactid={conttoupdate} registeredeventtable={portfolioAllCampaign} icon={tabIcon}></c-header>
+        <lightning-button label="Edit Portfolio" onclick={editportfolio}></lightning-button>
+        <c-editportfolio editportfoliomodal={showportfoliomodal} onchangemodal={hidemodal} onhidemodalbox={closemodal} contactid={conttoupdate} onrendertable={updatePortfolioTable}></c-editportfolio>
+        <c-portfoliotable contid={conttoupdate} tablefromheader={searchedPortfolioTable} ontabletoportfolio={portfolioDatatable} loadtable={loadChild}></c-portfoliotable>
+    </div>
+</template>
