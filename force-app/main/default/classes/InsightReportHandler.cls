@@ -1,5 +1,9 @@
 public class InsightReportHandler {
     public static void checkMasterFiles(List<ContentDocumentLink> newLinks) {
+        System.debug('GIT TESTING');
+        System.debug('GIT TESTING');
+        System.debug('GIT TESTING');
+        System.debug('GIT TESTING');
         Set<Id> reportIds = new Set<Id>();
         Set<Id> contDocIds = new Set<Id>();
         system.debug('newLinks'+newLinks);
